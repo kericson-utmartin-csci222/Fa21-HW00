@@ -136,6 +136,7 @@ For many Linux programs, you'll use a .<program name> file to customize how that
 cp emacs/.emacs ~/.emacs
 ```
 NOTE: this is assuming that you are in the terminal, and when you run ``ls``, you see this README.md file.
+
 NOTE2: "~" is a special shortcut to your home directory!
 
 Next, you'll want to move over the doqmnt file - this is an emacs extension that Dr. Guerin and I have been putting together for you!
@@ -228,7 +229,7 @@ We are now going to use our new, powerful emacs skillz (with a 'z') to make a qu
   ```console
   git status
   ```
-    - you **should** see that main.cpp has been modified!
+   - you **should** see that main.cpp has been modified!
   * Next, tell git that you want this modified main.cpp to be **staged** for a commit:
   ```console
   git add main.cpp
@@ -238,44 +239,45 @@ We are now going to use our new, powerful emacs skillz (with a 'z') to make a qu
   ```console
   git commit -m "Created my Hello World! program!"
   ```
-    - NOTE: the '-m' flag is so you can add a **m**essage to your commit.
-      - it doesn't need to match the above sample, but please make it say something useful, if not for your own sanity then for mine...
-      - if you don't attach a message, you'll be dumped into a text editor to add a message (git enforces you leaving a note on every commit!)
+   - NOTE: the '-m' flag is so you can add a **m**essage to your commit.
+   - it doesn't need to match the above sample, but please make it say something useful, if not for your own sanity then for mine...
+   - if you don't attach a message, you'll be dumped into a text editor to add a message (git enforces you leaving a note on every commit!)
   * Your main.cpp should now be committed to your local repository (:tada:yay!:tada:), but wait, it's not yet into GitHub (where it actually needs to be to count for homework...).  To get it out to GitHub, you need to **push** your commit
   ```console
   git push
   ```
-    - NOTE: you don't need to push to GitHub for every local commit (though it is a good habit to get into, so you don't forget to push your homework...), a single push will handle multiple local commits!
-    - You should now be able to see tests running on your assignment!
-    - Did they pass?  Did you remember the "!" at the end of "Hello World"?
-      - if they didn't pass, open your main.cpp up again, make the changes you need, then **stage**, **commit**, and **push** your changes!
-  1. Panic!!! (we're missing the header comments from our main.cpp - we need those for this class, and GitHub can't check for that in tests...
-  1. Add in comments!
-    1. Open up main.cpp again:
+NOTE: you don't need to push to GitHub for every local commit (though it is a good habit to get into, so you don't forget to push your homework...), a single push will handle multiple local commits!
+  - You should now be able to see tests running on your assignment!
+  - Did they pass?  Did you remember the "!" at the end of "Hello World"?
+ - if they didn't pass, open your main.cpp up again, make the changes you need, then **stage**, **commit**, and **push** your changes!
+
+###### Wait!!!
+we're missing the header comments from our main.cpp - we need those for this class, and GitHub can't check for that in tests...
+ Time to add in comments!
+ 1. Open up main.cpp again:
     ```console
     emacs -nw main.cpp
     ```
-    1. Throw in some file comments!
-      - M-x file-doq
-      - answer any questions it asks you
+ 2. Add in some file comments!
+      - ``M-x file-doq`` - make sure to answer any questions it asks you
       - marvel over the awesomeness of that doqmnt file you told emacs about!
-    1. Save and exit emacs
+    * Save and exit emacs
       - C-x C-s
       - C-x C-c
-  1. Compile and run your program to confirm you're still seeing the correct output
+  3. Compile and run your program to confirm you're still seeing the correct output
   ```console
   g++ main.cpp -Wall -Wextra -o hello
   ./hello
   ```
-  1. **stage**, **commit**, and then **push** your updated file!
-    1. `git add main.cpp`
-    1. `git commit -m "added in header comments"`
-    1. `git push`
-  1. Watch your tests running...
+  4. **stage**, **commit**, and then **push** your updated file!
+    * `git add main.cpp`
+    * `git commit -m "added in header comments"`
+    * `git push`
+  5. Watch your tests running...
     - if they were passing before, they should still be passing!
- 1. :tada: Celebrate! :tada: as we have completed the required portion of this lab!
- 1. Look into extra credit?
+  :tada: Celebrate! :tada: as we have completed the required portion of this lab!
+ What about extra credit?
    - [ ] Submit a screenshot of the test passing on Canvas
    - [ ] In the CheatSheets folder, edit the helpers.md file to finish filling out the documentation! (don't forget to **stage**, **commit**, and **push** these changes!
-
+:octocat:
 </details>
