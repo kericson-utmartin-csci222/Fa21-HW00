@@ -23,24 +23,21 @@
 (defun file-doq ()
   "Insert a header comment at the top of the file."
   (interactive)
-  (setq brief (read-string "@brief "))
-  (setq desc (read-string "@description "))
   (setq current (point))
   (setq total (point-max))
   
   (goto-char 0)
-  (insert "/**")
-  (insert "\n * @file ")
+  (insert "/**\n * @file ")
   (setq vals (split-string (buffer-file-name) "/"))
   (insert (car (last vals))) ; need to fix
   (insert "\n * @author ")
   (insert user-full-name)
   (insert "\n * @date ")
   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))
-  (insert (concat' "\n * @brief " brief))
+  (insert (concat' "\n * @brief " (read-string "@brief ")))
   
   (insert "\n * \n * ")
-  (insert desc)
+  (insert (read-string "@description "))
   (insert "\n */\n\n")
   (setq total (- (point-max) total))
   (setq current (+ current total))
@@ -59,10 +56,9 @@
   (setq end (point-max))
 
   (goto-char p1)
-  (insert "\n/**\n * ")
-  (setq desc (read-string "@description: "))
-  (insert desc)
-  (insert "\n *\n * @class ")
+  (insert "\n/**\n")
+  (insert (concat' " * " (read-string "@description: ") "\n"))
+  (insert " *\n * @class ")
   (insert classname)
   (insert " ")
   (setq vals (reverse (split-string (buffer-file-name) "/")))
@@ -72,8 +68,8 @@
   (insert "/")
   (insert (car vals))
   (insert "\"\n")
-  (insert " * @brief ")
-  (setq brief (read-string "@brief: "))
+  ;;(insert " * @brief ")
+  (setq brief (concat' " * @brief " (read-string "@brief: ")))
   (insert brief)
   (insert "\n *\n */\n")
   (setq end (- (point-max) end))
@@ -81,7 +77,7 @@
 
 
 (defun fun-doq ()
-  "Insert a comment block on the line below for the function prototyped on the current line"
+  "Insert a comment above the prototype on the current line."
   (interactive)
   (setq end (point-max))
   (setq p1 (line-beginning-position))
@@ -89,34 +85,67 @@
 
   (end-of-line)
   (setq p2 (point))
+  
+  ;; Retrieve prototype line
   (setq line (buffer-substring p1 p2))
-  (setq retval (car (split-string line)))
-  (setq args (substring line (+ (string-match "(" line) 1) (string-match ")" line)))
-  (setq arglist (split-string args ", "))
-
+  
   (goto-char p1)
-  (insert "\n/**\n")
-  (setq desc (read-string "@description  "))
-  (insert (concat' " * " desc "\n *\n"))
+  
+  ;; Process prototype
+  (setq arglist (get_args line))
+  (setq type_name (get_type_ident line))
 
-  ;;put args in here
+  ;; Start docs
+  (insert "\n/**\n")
+  (insert (concat' " * " (read-string "@description  ") "\n *\n"))
+  
+  ;; Process args if they exist
+  (insert_args? arglist)
+  
+  (insert (concat' " * @pre " (read-string "@pre ") "\n")) 
+
+  ;; Process type info if it exists
+  (insert_type? type_name)
+
+  (insert (concat' " * @post " (read-string "@post ") "\n"))
+  (insert " * \n */\n")
+  
+  ;; Return to original cursor position.
+  (goto-char (+ position (- (point-max) end))))
+
+
+;; String Processing Functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Takes prototype, returns a list containing a type and identifier
+(defun get_type_ident (line)
+    (split-string (substring line 0 (string-match "(" line))))
+
+
+;; Takes prototype, returns a list of arguments.
+(defun get_args (line)
+  (split-string
+   ;; Get everything before first paren.
+   (substring line (+ (string-match "(" line) 1) (string-match ")" line))
+   ;; Split over , and trim whitespace
+   "," t "\s*"))
+
+
+;; Printing Functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; If args exist, print in a loop
+(defun insert_args? (args)
   (if (> (length arglist) 0)
       (dolist (arg arglist)
-	(setq param_desc (read-string (concat' "Describe " arg " ")))
+	(setq param_desc (read-string (concat' "@param " arg " ")))
         (insert " * @param ")
         (insert arg)
 	(insert " ")
 	(insert param_desc)
         (insert "\n") ))
-  (insert " * @pre \n")
-  (setq ret_desc (read-string (concat' "@return " retval " ")))
-  (insert (concat' " * @return " retval " " ret_desc "\n"))
-  (insert " * @post \n")
-  (insert " * \n")
-  (insert " */\n")
-  
-  ;; Return to original cursor position.
-  (setq end (- (point-max) end))
-  (goto-char (+ position end)))
+  )
 
-
+;; If type info exists, query user and print
+(defun insert_type? (t_name)
+  (if (> (length type_name) 1)
+      (insert
+       (concat' " * @return " (car type_name) " "
+		(read-string (concat' "@return " (car type_name) " "))
+		"\n")) nil))

@@ -22,7 +22,7 @@ Fun fact: if you edit the README.md file on your machine, you can "fill in" the 
 - [ ] Celebrate! the completion of HW00!
 - [ ] Extra credit?
 
-## Working with Git ##
+## Working with Git :octocat: ##
 <details>
 <summary> Getting going with Git </summary>
 
