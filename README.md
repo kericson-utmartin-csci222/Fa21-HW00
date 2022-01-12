@@ -1,6 +1,7 @@
 # Welcome to HW00! #
 For this homework assignment, we'll be working on getting you used to Git, Linux, and emacs (probably not in that order
 )
+Fun fact: if you edit the README.md file on your machine, you can "fill in" the checkboxes!
 
 - [X] Set up your GitHub account
 - [X] Accept the Classroom Assignment
@@ -27,7 +28,7 @@ For this homework assignment, we'll be working on getting you used to Git, Linux
 
 If you are here, that means you have successfully created your GitHub account, *and* connected to the class repo :tada:
 ### Getting Started ###
-Creating your GitHub account is something you need to do once, and then never again.  Creating a repo (what happened when you accepted the class assignment), is something you'll likely do once per project - you shouldn't need to do it again for this class.
+Creating your GitHub account is something you need to do once, and then never again.  Creating a repo (what happened when you accepted the class assignment), is something you'll likely do once per project - you shouldn't need to do it again for this assignment.
 ### Setting up SSH with GitHub ###
 This is a task you'll need to do once per unique *machine* you work on.  Given the way the CS department Linux machines are set up, you should only need to do this once, and it will work no matter which physical machine you are using (you will need to do it for a home/personal machine if you want to though!)
 1. Open a Terminal in Linux (you can click on "Activities" in the upper left, and type Terminal into the search bar)
@@ -66,11 +67,11 @@ We've only brushed the basics of setting up your machine to work with Git, next 
 <details>
 	<summary>Steps to get the repo cloned to your local machine! (Do this once in the lab)</summary>
 
-If you are viewing this in the browser (which you probably are), back out of the "HW0" folder to the base of the repository (you may want to keep this open in another tab)
+If you are viewing this in the browser (which you probably are):
 1. Click on the download code button
 1. Make sure the SSH option is selected
 1. You should see a link starting with ``git@`` - click on the clipboard next to it
-1. In the terminal, make a folder to hold you CS222 projects
+1. In the terminal, make a folder to hold your CS222 projects
    ```console
    mkdir CSCI222
    ```
@@ -87,7 +88,7 @@ If you are viewing this in the browser (which you probably are), back out of the
    where the ... is the rest of the repository name!
    
    NOTE: you may be asked if it's OK for SSH to talk to a specific IP address.  If prompted, type in 'yes', and continue the clone operation!
-1. You should now have a local copy of this repo :tada: double-check that the file structure matches what you're seeing here online (you'll want to use ``ls`` to _list_ the contents of a directory, and ``cd`` to _change directory_, or move into a folder.
+1. You should now have a local copy of this repo :tada: double-check that the file structure matches what you're seeing here online (you'll want to use ``ls`` to _list_ the contents of a directory, and ``cd`` to _change directory_, or move into a folder to make sure everything looks good.
 
 Your GitHub setup should now be complete!  We'll be working closely with Git thoughout the semester, so don't worry if it still feels a little weird!
 Also, if you want to clone your repository to a personal machine, you'll need to follow these steps again!
@@ -134,7 +135,7 @@ For many Linux programs, you'll use a .<program name> file to customize how that
 ```console
 cp emacs/.emacs ~/.emacs
 ```
-NOTE: this is assuming that you're in the HW00 folder of your repository
+NOTE: this is assuming that you are in the terminal, and when you run ``ls``, you see this README.md file.
 NOTE2: "~" is a special shortcut to your home directory!
 
 Next, you'll want to move over the doqmnt file - this is an emacs extension that Dr. Guerin and I have been putting together for you!
@@ -143,7 +144,7 @@ First, you'll create a folder to hold the file inside the emacs directory, and t
 mkdir ~/.emacs.d/include
 cp emacs/doqmnt.el ~/.emacs.d/include
 ```
-Again, this is assuming that you're in the HW00 folder of your repository
+Again, this is assuming that you're in the base folder of this repository
 
 The emacs and doqmnt files provide several helpful functions, but of immediate use:
 - M-x main - this will insert a main.cpp template at the cursor point - it will include the iostream library, and use the standard namespace
@@ -153,7 +154,7 @@ The emacs and doqmnt files provide several helpful functions, but of immediate u
 ##### Installing company ####
 company-mode is a useful emacs add-on, standing for complete-any - it adds in helpful completion suggestions based on what you're starting to type - helpful when writing anything in emacs, not just C++ code! (though we'll mostly be using it for C++ code in class).
 
-You can find more information about company-mode here:
+You can find more information about company-mode here: [company-mode](https://company-mode.github.io/)
 
 We will just be following the basic install steps:
 1. Open your .emacs file
@@ -181,7 +182,6 @@ After installing company, make sure it's always enabled:
 NOTE: there are a lot of company options, we only need the basic one for this class! (you're welcome to try out more if you wish!)
 
 
-
 </details>
 
 ### Practicing with emacs && Git ###
@@ -190,28 +190,28 @@ NOTE: there are a lot of company options, we only need the basic one for this cl
 
 We are now going to use our new, powerful emacs skillz (with a 'z') to make a quick program, showing off that everything is working (and also practicing the important steps of compiling, testing, and then interacting with git through `git add`, `git commit`, and `git push`
 
-1. Open the main.cpp file in your HW00 folder
+1. Open the main.cpp file in this repository
   - cd into the directory, if needed
   - then type in:
   ```console
   emacs -nw main.cpp
   ```
   - this opens up emacs with "no window" (it keeps it in the terminal)
-  - NOTE: this is also how you can create a new file - just open it up in emacs!
- 1. Use the super-cool special "main" command that we have in our .emacs file:
+  - NOTE: this is also how you can create a new file - just put the new file name after the ``emacs -nw`` and a new file will be created for you!
+ 2. Use the super-cool special "main" command that we have in our .emacs file:
    - M-x main
    - be amazed at how awesome it is!
- 1. Using your skeleton main(), have it print out "Hello World!"
+ 3. Using your skeleton main(), have it print out "Hello World!"
    - you've got this part!
- 1. Save and exit emacs
+ 4. Save and exit emacs
    - C-x
    - C-s
-   - (saving should now be done)
+    (saving should now be done)
    - C-x
    - C-c
-   - (this should exit you out of emacs, and bring you back to the console)
- 1. Time to test your program!
-   - it's always good to test things before submitting them...
+   (this should exit you out of emacs, and bring you back to the console)
+ 5. Time to test your program!
+   Remember: it's always good to test things before submitting them...
    - compile with g++:
    ```console
    g++ main.cpp -Wall -Wextra -o hello
@@ -223,25 +223,25 @@ We are now going to use our new, powerful emacs skillz (with a 'z') to make a qu
    ./hello
    ```
    - profit! (though make sure you're printing out "Hello World!"
-1. Once your program is running correctly, it's time to get your program into git!
-  1. First, check the **status** of your repository:
+6. Once your program is running correctly, it's time to get your program into git!
+  * First, check the **status** of your repository:
   ```console
   git status
   ```
-    - you *should* see that main.cpp has been modified!
-  1. Next, tell git that you want this modified main.cpp to be **staged** for a commit:
+    - you **should** see that main.cpp has been modified!
+  * Next, tell git that you want this modified main.cpp to be **staged** for a commit:
   ```console
   git add main.cpp
   ```
-    - if you run `git status` again, you should now see that main.cpp is added for commit!
-  1. Next, you want to **commit** your changes to your local repository:
+    - if you run ``git status`` again, you should now see that main.cpp is added for commit!
+  * Next, you want to **commit** your changes to your local repository:
   ```console
   git commit -m "Created my Hello World! program!"
   ```
-    - NOTE: the `-m` flag is so you can add a **m**essage to your commit.
+    - NOTE: the '-m' flag is so you can add a **m**essage to your commit.
       - it doesn't need to match the above sample, but please make it say something useful, if not for your own sanity then for mine...
       - if you don't attach a message, you'll be dumped into a text editor to add a message (git enforces you leaving a note on every commit!)
-  1. Your main.cpp should now be committed to your local repository (yay!), but wait, it's not yet into GitHub (where it actually needs to be to count for homework...).  To get it out to GitHub, you need to **push** your commit:
+  * Your main.cpp should now be committed to your local repository (:tada:yay!:tada:), but wait, it's not yet into GitHub (where it actually needs to be to count for homework...).  To get it out to GitHub, you need to **push** your commit
   ```console
   git push
   ```
