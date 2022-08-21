@@ -1,7 +1,8 @@
 # Welcome to HW00! #
 For this homework assignment, we'll be working on getting you used to Git, Linux, and emacs (probably not in that order
 )
-Fun fact: if you edit the README.md file on your machine, you can "fill in" the checkboxes!
+
+Fun fact: if you edit the README.md file on your machine, you can "fill in" the checkboxes! Make your changes, save, commit, and push to see them live online!
 
 - [X] Set up your GitHub account
 - [X] Accept the Classroom Assignment
@@ -50,14 +51,14 @@ To do this, we'll use the ``cat`` command, which con*cat*enates the file to your
    cat .ssh/id_ed25519.pub
    ```
    NOTE: you may have a slightly different name - the key thing is to make sure you have the file that ends with .pub - this is the public key!
-1.  copy this from the terminal
+6.  copy this from the terminal
     * highlight with the mouse, then hit enter (this copies it to the clipboard)
-1. in the browser, click your profile photo on the upper-right of any GitHub page, then select "Settings"
-1. in the user settings sidebar, click "SSH and GPG keys"
-1. click on "New SSH Key"
-1. in the "Title" field, add a helpful label for the key (something like "CS Lab Key" would be good!)
-1. paste your key into the "Key" field
-1. click "Add SSH key"
+7. in the browser, click your profile photo on the upper-right of any GitHub page, then select "Settings"
+8. in the user settings sidebar, click "SSH and GPG keys"
+9. click on "New SSH Key"
+10. in the "Title" field, add a helpful label for the key (something like "CS Lab Key" would be good!)
+11. paste your key into the "Key" field
+12. click "Add SSH key"
 
 At this point, you should be good to go, though you may need to confirm your GitHub password!
 We've only brushed the basics of setting up your machine to work with Git, next up: Cloning this repo to the local machine!
@@ -68,7 +69,7 @@ We've only brushed the basics of setting up your machine to work with Git, next 
 	<summary>Steps to get the repo cloned to your local machine! (Do this once in the lab)</summary>
 
 If you are viewing this in the browser (which you probably are):
-1. Click on the download code button
+1. Click on the green "Code" button near the top of the page
 1. Make sure the SSH option is selected
 1. You should see a link starting with ``git@`` - click on the clipboard next to it
 1. In the terminal, make a folder to hold your CS222 projects
@@ -77,15 +78,14 @@ If you are viewing this in the browser (which you probably are):
    ```
    It is up to you if you want to place this in your home directory (where you start by default in the terminal), or if you want to put it into the Documents folder, or Desktop folder (``cd Documents``, for example, first)
 1. Now move into the new folder using the 'change directory' (`cd`) command
+   ```console
+   cd CSCI222
+   ```
 1. Now you're ready to clone your repo!  In the terminal type in:
    ```console
    git clone
    ```
-   And then paste in the link starting with ``git@`` into the terminal (you can do this with a right click!)  This should result in you seeing:
-   ```console
-   git clone git@...
-   ```
-   where the ... is the rest of the repository name!
+   And then paste in the link starting with ``git@`` into the terminal (you can do this with a right click!)  This should result in you seeing: ``git clone git@...`` where the ... is the rest of the repository name!
    
    NOTE: you may be asked if it's OK for SSH to talk to a specific IP address.  If prompted, type in 'yes', and continue the clone operation!
 1. You should now have a local copy of this repo :tada: double-check that the file structure matches what you're seeing here online (you'll want to use ``ls`` to _list_ the contents of a directory, and ``cd`` to _change directory_, or move into a folder to make sure everything looks good.
@@ -131,6 +131,8 @@ the ``-nw`` is what will force emacs to open in the terminal, as opposed to popp
 - C-u - undo!
 
 #### Setting up your .emacs file ####
+NOTE: Before you get started, make sure you are inside the folder for this assignment, an ``ls`` should show this README.md file!
+
 For many Linux programs, you'll use a .<program name> file to customize how that program behaves, generally known as init files.  To customize emacs, we'll be modifying your .emacs file.  This file should live in your home diretory (/home/cs0/<your username>).  You can find a starter .emacs file in <file location>, you either place a copy of the provided file into your home directory, or open up both files and copy it over line by line.  To move the file over:
 ```console
 cp emacs/.emacs ~/.emacs
@@ -159,9 +161,9 @@ You can find more information about company-mode here: [company-mode](https://co
 
 We will just be following the basic install steps:
 1. Open your .emacs file
-```console
-emacs -nw .emacs
-```
+   ```console
+   emacs -nw ~/.emacs
+   ```
 1. Type in: ``M-x package-install`` and hit enter
 1. Type in: ``company`` and hit enter
 
@@ -192,16 +194,16 @@ NOTE: there are a lot of company options, we only need the basic one for this cl
 We are now going to use our new, powerful emacs skillz (with a 'z') to make a quick program, showing off that everything is working (and also practicing the important steps of compiling, testing, and then interacting with git through `git add`, `git commit`, and `git push`
 
 1. Open the main.cpp file in this repository
-  - cd into the directory, if needed
-  - then type in:
-  ```console
-  emacs -nw main.cpp
-  ```
-  - this opens up emacs with "no window" (it keeps it in the terminal)
-  - NOTE: this is also how you can create a new file - just put the new file name after the ``emacs -nw`` and a new file will be created for you!
+    - cd into the directory, if needed
+    - then type in:
+    ```console
+    emacs -nw main.cpp
+    ```
+   - this opens up emacs with "no window" (it keeps it in the terminal)
+   - NOTE: this is also how you can create a new file - just put the new file name after the ``emacs -nw`` and a new file will be created for you!
  2. Use the super-cool special "main" command that we have in our .emacs file:
-   - M-x main
-   - be amazed at how awesome it is!
+     - M-x main
+     - be amazed at how awesome it is!
  3. Using your skeleton main(), have it print out "Hello World!"
    - you've got this part!
  4. Save and exit emacs
