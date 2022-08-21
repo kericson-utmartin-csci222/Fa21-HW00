@@ -204,57 +204,56 @@ We are now going to use our new, powerful emacs skillz (with a 'z') to make a qu
  2. Use the super-cool special "main" command that we have in our .emacs file:
      - M-x main
      - be amazed at how awesome it is!
- 3. Using your skeleton main(), have it print out "Hello World!"
-   - you've got this part!
+ 3. Using your skeleton main(), update it so your program prints out "Hello World!"
+    - you've got this part!
  4. Save and exit emacs
-   - C-x
-   - C-s
+    - C-x C-s
     (saving should now be done)
-   - C-x
-   - C-c
-   (this should exit you out of emacs, and bring you back to the console)
+    - C-x C-c
+    (this should exit you out of emacs, and bring you back to the console)
  5. Time to test your program!
    Remember: it's always good to test things before submitting them...
-   - compile with g++:
-   ```console
-   g++ main.cpp -Wall -Wextra -o hello
-   ```
-   - this *should* happily compile (please reach out for help if you're getting errors)
-   - with a happy compilation, you should now have an executable called hello (it should be green and exciting when you type in `ls`
-   - run your program!
-   ```console
-   ./hello
-   ```
-   - profit! (though make sure you're printing out "Hello World!"
+    - compile with g++:
+    ```console
+    g++ main.cpp -Wall -Wextra -o hello
+    ```
+    - this *should* happily compile (please reach out for help if you're getting errors)
+    - with a happy compilation, you should now have an executable called hello (it should be green and exciting when you type in `ls`
+    - run your program!
+    ```console
+    ./hello
+    ```
+    - profit! (though make sure you're printing out "Hello World!"
 6. Once your program is running correctly, it's time to get your program into git!
-  * First, check the **status** of your repository:
-  ```console
-  git status
-  ```
+   * First, check the **status** of your repository:
+   ```console
+   git status
+   ```
    - you **should** see that main.cpp has been modified!
-  * Next, tell git that you want this modified main.cpp to be **staged** for a commit:
-  ```console
-  git add main.cpp
-  ```
-    - if you run ``git status`` again, you should now see that main.cpp is added for commit!
-  * Next, you want to **commit** your changes to your local repository:
-  ```console
-  git commit -m "Created my Hello World! program!"
-  ```
+   * Next, tell git that you want this modified main.cpp to be **staged** for a commit:
+   ```console
+   git add main.cpp
+   ```
+   - if you run ``git status`` again, you should now see that main.cpp is added for commit!
+   * Next, you want to **commit** your changes to your local repository:
+   ```console
+   git commit -m "Created my Hello World! program!"
+   ```
    - NOTE: the '-m' flag is so you can add a **m**essage to your commit.
    - it doesn't need to match the above sample, but please make it say something useful, if not for your own sanity then for mine...
    - if you don't attach a message, you'll be dumped into a text editor to add a message (git enforces you leaving a note on every commit!)
-  * Your main.cpp should now be committed to your local repository (:tada:yay!:tada:), but wait, it's not yet into GitHub (where it actually needs to be to count for homework...).  To get it out to GitHub, you need to **push** your commit
-  ```console
-  git push
-  ```
-NOTE: you don't need to push to GitHub for every local commit (though it is a good habit to get into, so you don't forget to push your homework...), a single push will handle multiple local commits!
-  - You should now be able to see tests running on your assignment!
-  - Did they pass?  Did you remember the "!" at the end of "Hello World"?
- - if they didn't pass, open your main.cpp up again, make the changes you need, then **stage**, **commit**, and **push** your changes!
+   * Your main.cpp should now be committed to your local repository (:tada:yay!:tada:), but wait, it's not yet into GitHub (where it actually needs to be to count for homework...).  To get it out to GitHub, you need to **push** your commit
+   ```console
+   git push
+   ```
+   NOTE: you don't need to push to GitHub for every local commit (though it is a good habit to get into, so you don't forget to push your homework...), a single push will handle multiple local commits!
+   - You should now be able to see tests running on your assignment!
+   - Did they pass?  Did you remember the "!" at the end of "Hello World"?
+  - if they didn't pass, open your main.cpp up again, make the changes you need, then **stage**, **commit**, and **push** your changes!
 
-###### Wait!!!
+### Wait!!!
 we're missing the header comments from our main.cpp - we need those for this class, and GitHub can't check for that in tests...
+
  Time to add in comments!
  1. Open up main.cpp again:
     ```console
@@ -277,8 +276,10 @@ we're missing the header comments from our main.cpp - we need those for this cla
     * `git push`
   5. Watch your tests running...
     - if they were passing before, they should still be passing!
+
+
   :tada: Celebrate! :tada: as we have completed the required portion of this lab!
- What about extra credit?
+### What about extra credit?
    - [ ] Submit a screenshot of the test passing on Canvas
    - [ ] In the CheatSheets folder, edit the helpers.md file to finish filling out the documentation! (don't forget to **stage**, **commit**, and **push** these changes!
 :octocat:
