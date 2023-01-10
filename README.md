@@ -35,9 +35,9 @@ This is a task you'll need to do once per unique *machine* you work on.  Given t
 1. Open a Terminal in Linux (you can click on "Activities" in the upper left, and type Terminal into the search bar)
 1. In the terminal, generate an SSH key:
    ```console
-   $ ssh-keygen -t ed25519 -C "username@ut.utm.edu"
+   ssh-keygen -t ed25519 -C "username@ut.utm.edu"
    ```
-   NOTES: the '$' is just there to show that you're on a Linux terminal, and you should put in your own UTM email address in the quotes! (what you signed up on GitHub with)
+   NOTE: You should put in your own UTM email address in the quotes! (what you signed up on GitHub with)
 1. You will be prompted for a file name - press enter to accept the default file location (but remember it!)
 1. You will be prompted to enter a passphrase (hit enter for no passphrase - this is the simplest thing to do!)
 1. Re-enter your passphrase and press enter (or leave blank and press enter again for no passphrase)
@@ -89,6 +89,13 @@ If you are viewing this in the browser (which you probably are):
    
    NOTE: you may be asked if it's OK for SSH to talk to a specific IP address.  If prompted, type in 'yes', and continue the clone operation!
 1. You should now have a local copy of this repo :tada: double-check that the file structure matches what you're seeing here online (you'll want to use ``ls`` to _list_ the contents of a directory, and ``cd`` to _change directory_, or move into a folder to make sure everything looks good.
+1. As a last step, make sure to configure git, and make sure you have set it to use emacs as your default editor:
+   ```console
+   git config --global user.name "John Doe"
+   git config --global user.email johndoe@example.com
+   git config --global core.editor emacs
+   ```
+   NOTE: Unless your name is John Doe, make sure to change the user.name field, and also make sure user.email is using your UTM email!
 
 Your GitHub setup should now be complete!  We'll be working closely with Git thoughout the semester, so don't worry if it still feels a little weird!
 Also, if you want to clone your repository to a personal machine, you'll need to follow these steps again!
@@ -104,11 +111,14 @@ We're going to be using emacs this semester for our software development.  Emacs
 Most of the commands we'll be using this semester will start with either C- or M-, this stands for the Control and Meta keys, respectively.  For example, ``C-x`` means to hold the control key, and then tap 'x'.  On most standard keyboards, the 'Alt' key is mapped to Meta (you can override this behavior if wanted/needed, but we're not going to cover that here)
 
 #### Running emacs ####
-In this class, we'll be primarily running emacs in the terminal:
+In this class, we'll be primarily running emacs in the terminal!  To get started, open up emacs with no file argument:
 ```console
 emacs -nw
 ```
 the ``-nw`` is what will force emacs to open in the terminal, as opposed to popping up a new window.  This is useful when running emacs remotely!
+
+You have just opened up a scratch area, you'll want to exit out now with C-x C-c
+
 
 #### Some very common commands (as in, you'll see/use all the time) ####
 - C-x C-s - save
